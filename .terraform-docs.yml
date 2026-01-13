@@ -1,0 +1,40 @@
+formatter: markdown table
+
+sections:
+  show:
+    - requirements
+    - providers
+    - modules
+    - resources
+    - inputs
+    - outputs
+
+content: |
+  {{ .Header }}
+
+  ## Usage
+
+  ```hcl
+  module "example" {
+    source = "path/to/module"
+  }
+  ```
+
+  {{ .Requirements }}
+  {{ .Providers }}
+  {{ .Modules }}
+  {{ .Resources }}
+  {{ .Inputs }}
+  {{ .Outputs }}
+
+output:
+  file: README.md
+  mode: inject
+  template: |-
+    <!-- BEGIN_TF_DOCS -->
+    {{ .Content }}
+    <!-- END_TF_DOCS -->
+
+sort:
+  enabled: true
+  by: required

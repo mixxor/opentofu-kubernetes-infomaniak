@@ -14,5 +14,13 @@ terraform {
       source  = "Infomaniak/infomaniak"
       version = "~> 1.3"
     }
+    local = {
+      source  = "hashicorp/local"
+      version = "~> 2.5"
+    }
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = "~> 1.18"
+    }
   }
 }

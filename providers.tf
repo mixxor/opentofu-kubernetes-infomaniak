@@ -1,16 +1,18 @@
+provider "infomaniak" {
+  host  = "https://api.infomaniak.com"
+  token = var.infomaniak_token
+}
+
 provider "kubernetes" {
-  config_path    = var.kubeconfig_path
-  config_context = var.kubeconfig_context
+  config_path = "${path.module}/kubeconfig"
 }
 
 provider "helm" {
   kubernetes {
-    config_path    = var.kubeconfig_path
-    config_context = var.kubeconfig_context
+    config_path = "${path.module}/kubeconfig"
   }
 }
 
-provider "infomaniak" {
-  host  = "https://api.infomaniak.com"
-  token = var.infomaniak_token
+provider "kubectl" {
+  config_path = "${path.module}/kubeconfig"
 }

@@ -81,12 +81,18 @@ module "example" {
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | ~> 2.12 |
 | <a name="requirement_infomaniak"></a> [infomaniak](#requirement\_infomaniak) | ~> 1.3 |
+| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | ~> 1.18 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | ~> 2.25 |
+| <a name="requirement_local"></a> [local](#requirement\_local) | ~> 2.5 |
 ## Providers
 
 | Name | Version |
 |------|---------|
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 2.17.0 |
 | <a name="provider_infomaniak"></a> [infomaniak](#provider\_infomaniak) | 1.3.6 |
+| <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | 1.19.0 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.38.0 |
+| <a name="provider_local"></a> [local](#provider\_local) | 2.6.1 |
 ## Modules
 
 No modules.
@@ -94,8 +100,12 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [helm_release.argocd](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 | [infomaniak_kaas.cluster](https://registry.terraform.io/providers/Infomaniak/infomaniak/latest/docs/resources/kaas) | resource |
 | [infomaniak_kaas_instance_pool.instance_pool](https://registry.terraform.io/providers/Infomaniak/infomaniak/latest/docs/resources/kaas_instance_pool) | resource |
+| [kubectl_manifest.cluster_essentials](https://registry.terraform.io/providers/gavinbunney/kubectl/latest/docs/resources/manifest) | resource |
+| [kubernetes_namespace.argocd](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [local_sensitive_file.kubeconfig](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/sensitive_file) | resource |
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -105,8 +115,6 @@ No modules.
 | <a name="input_public_cloud_project_id"></a> [public\_cloud\_project\_id](#input\_public\_cloud\_project\_id) | The ID of the Infomaniak Public Cloud project | `number` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Infomaniak region for the cluster | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the Kubernetes cluster | `string` | `"cluster"` | no |
-| <a name="input_kubeconfig_context"></a> [kubeconfig\_context](#input\_kubeconfig\_context) | Kubernetes context to use | `string` | `null` | no |
-| <a name="input_kubeconfig_path"></a> [kubeconfig\_path](#input\_kubeconfig\_path) | Path to the kubeconfig file | `string` | `"~/.kube/config"` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Kubernetes version for the cluster | `string` | `"1.31"` | no |
 | <a name="input_pack_name"></a> [pack\_name](#input\_pack\_name) | KaaS pack name (shared, dedicated) | `string` | `"shared"` | no |
 ## Outputs
